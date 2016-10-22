@@ -8,7 +8,7 @@
 
 Name:             %{?scl_prefix}apache-%{short_name}
 Version:          1.2
-Release:          16%{?dist}
+Release:          18%{?dist}
 Summary:          Command Line Interface Library for Java
 Group:            Development/Libraries
 License:          ASL 2.0
@@ -17,11 +17,8 @@ Source0:          http://www.apache.org/dist/commons/%{base_name}/source/%{short
 BuildArch:        noarch
 
 BuildRequires:    java-devel >= 1:1.6.0
-BuildRequires:    jpackage-utils
-BuildRequires:    maven-local
-BuildRequires:    apache-commons-parent >= 26-7
-
-%{?scl:Requires: %scl_runtime}
+BuildRequires:    maven30-maven-local
+BuildRequires:    maven30-apache-commons-parent >= 26-7
 
 %description
 The CLI library provides a simple and easy to use API for working with the 
@@ -35,7 +32,7 @@ Group:            Documentation
 This package contains the API documentation for %{pkg_name}.
 
 %prep
-%{?scl:scl enable %{scl} - << "EOF"}
+%{?scl:scl enable maven30 %{scl} - << "EOF"}
 %setup -q -n %{short_name}-%{version}-src
 
 # Compatibility links
@@ -44,12 +41,12 @@ This package contains the API documentation for %{pkg_name}.
 %{?scl:EOF}
 
 %build
-%{?scl:scl enable %{scl} - << "EOF"}
+%{?scl:scl enable maven30 %{scl} - << "EOF"}
 %mvn_build
 %{?scl:EOF}
 
 %install
-%{?scl:scl enable %{scl} - << "EOF"}
+%{?scl:scl enable maven30 %{scl} - << "EOF"}
 %mvn_install
 %{?scl:EOF}
 
@@ -60,6 +57,12 @@ This package contains the API documentation for %{pkg_name}.
 %doc LICENSE.txt NOTICE.txt
 
 %changelog
+* Tue Jun 17 2014 Severin Gehwolf <sgehwolf@redhat.com> - 1.2-18
+- Only enable maven30 collection in spec file.
+
+* Mon Jun 16 2014 Severin Gehwolf <sgehwolf@redhat.com> - 1.2-17
+- Rebuild against maven30 collection.
+
 * Mon Jan 20 2014 Omair Majid <omajid@redhat.com> - 1.2-16
 - Rebuild in order to fix osgi()-style provides.
 - Resolves: RHBZ#1054813
