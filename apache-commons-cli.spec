@@ -5,7 +5,7 @@
 
 Name:             %{?scl_prefix}apache-%{short_name}
 Version:          1.4
-Release:          1.1%{?dist}
+Release:          1.2%{?dist}
 Summary:          Command Line Interface Library for Java
 License:          ASL 2.0
 URL:              http://commons.apache.org/cli/
@@ -53,6 +53,9 @@ This package contains the API documentation for %{pkg_name}.
 %doc LICENSE.txt NOTICE.txt
 
 %changelog
+* Thu Jun 22 2017 Michael Simacek <msimacek@redhat.com> - 1.4-1.2
+- Mass rebuild 2017-06-22
+
 * Wed Jun 21 2017 Java Maintainers <java-maint@redhat.com> - 1.4-1.1
 - Automated package import and SCL-ization
 
